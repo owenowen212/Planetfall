@@ -1,14 +1,6 @@
-## /tg/station codebase
+## Planetfall codebase originally forked from /tg/station.
 
-[![Build Status](https://travis-ci.org/tgstation/tgstation.png)](https://travis-ci.org/tgstation/tgstation) [![Krihelimeter](http://www.krihelinator.xyz/badge/tgstation/tgstation)](http://www.krihelinator.xyz)  
-[![Percentage of issues still open](http://isitmaintained.com/badge/open/tgstation/tgstation.svg)](http://isitmaintained.com/project/tgstation/tgstation "Percentage of issues still open") [![Average time to resolve an issue](http://isitmaintained.com/badge/resolution/tgstation/tgstation.svg)](http://isitmaintained.com/project/tgstation/tgstation "Average time to resolve an issue") ![Coverage](https://s3.amazonaws.com/assets.coveralls.io/badges/coveralls_0.svg)  
-[![forthebadge](http://forthebadge.com/images/badges/built-with-resentment.svg)](http://forthebadge.com)
-
-**Website:** http://www.tgstation13.org <BR>
-**Code:** https://github.com/tgstation/tgstation <BR>
-**Wiki** http://tgstation13.org/wiki/Main_Page <BR>
-**IRC:** irc://irc.rizon.net/coderbus or if you dont have an IRC client, you can click  [here](https://kiwiirc.com/client/irc.rizon.net:6667/?&theme=cli#coderbus).<BR>
-
+**Code:** https://github.com/Planetfall/PlanetfallSS13 <BR>
 
 ## DOWNLOADING
 
@@ -18,7 +10,7 @@ Option 1:
 Follow this: http://www.tgstation13.org/wiki/Setting_up_git
 
 Option 2: Download the source code as a zip by clicking the ZIP button in the
-code tab of https://github.com/tgstation/tgstation
+code tab of https://github.com/Planetfall/PlanetfallSS13
 (note: this will use a lot of bandwidth if you wish to update and is a lot of
 hassle if you want to make any changes at all, so it's not recommended.)
 
@@ -39,7 +31,7 @@ tgstation.dmb - 0 errors, 0 warnings
 
 If you see any errors or warnings, something has gone wrong - possibly a corrupt
 download or the files extracted wrong. If problems persist, ask for assistance
-in irc://irc.rizon.net/coderbus
+on Discord.
 
 Once that's done, open up the config folder.  You'll want to edit config.txt to
 set the probabilities for different gamemodes in Secret and to set your server
@@ -83,19 +75,19 @@ the new version.
 
 If you'd like a more robust server hosting option for tgstation and its
 derivatives. Check out our server tools suite at 
-https://github.com/tgstation/tgstation-server
+https://github.com/Planetfall/PlanetfallSS13
 
 ## MAPS
 
-/tg/station currently comes equipped with six maps.
+Planetfall currently comes equipped with seven maps; our Planetfall testing map for development purposes and six station maps inherited from /tg/station.
 
+* [Persephone] Testing map
 * [BoxStation (default)](http://tgstation13.org/wiki/Boxstation)
 * [MetaStation](https://tgstation13.org/wiki/MetaStation)
 * [DeltaStation](https://tgstation13.org/wiki/DeltaStation)
 * [OmegaStation](https://tgstation13.org/wiki/OmegaStation)
 * [PubbyStation](https://tgstation13.org/wiki/PubbyStation)
 * [CereStation](https://tgstation13.org/wiki/CereStation)
-
 
 All maps have their own code file that is in the base of the _maps directory. Maps are loaded dynamically when the game starts. Follow this guideline when adding your own map, to your fork, for easy compatibility.
 
@@ -107,7 +99,7 @@ Anytime you want to make changes to a map it's imperative you use the [Map Mergi
 
 ## AWAY MISSIONS
 
-/tg/station supports loading away missions however they are disabled by default.
+Planetfall supports loading away missions however they are disabled by default.
 
 Map files for away missions are located in the _maps/RandomZLevels directory. Each away mission includes it's own code definitions located in /code/modules/awaymissions/mission_code. These files must be included and compiled with the server beforehand otherwise the server will crash upon trying to load away missions that lack their code.
 
