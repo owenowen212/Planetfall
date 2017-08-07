@@ -50647,7 +50647,7 @@
 /area/hydroponics/garden/monastery)
 "cgm" = (
 /obj/machinery/hydroponics/soil,
-/obj/item/seeds/watermelon/holy,
+/obj/item/seeds/watermelon/watermelon,
 /turf/open/floor/grass,
 /area/hydroponics/garden/monastery)
 "cgn" = (
