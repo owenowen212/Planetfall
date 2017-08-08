@@ -21,8 +21,11 @@
 /obj/attackby(obj/item/I, mob/living/user, params)
 	return I.attack_obj(src, user)
 
+/obj/item/proc/get_attack_cooldown(mob/user, atom/target)
+	return attack_speed
+
 /mob/living/attackby(obj/item/I, mob/user, params)
-	user.changeNext_move(CLICK_CD_MELEE)
+	user.changeNext_move(I.get_attack_cooldown(user, src))
 	if(user.a_intent == INTENT_HARM && stat == DEAD && butcher_results) //can we butcher it?
 		var/sharpness = I.is_sharp()
 		if(sharpness)
@@ -56,7 +59,7 @@
 /obj/item/proc/attack_obj(obj/O, mob/living/user)
 	if(flags & NOBLUDGEON)
 		return
-	user.changeNext_move(CLICK_CD_MELEE)
+	user.changeNext_move(get_attack_cooldown(user, O))
 	user.do_attack_animation(O)
 	O.attacked_by(src, user)
 
@@ -116,4 +119,3 @@
 	visible_message("<span class='danger'>[attack_message]</span>", \
 		"<span class='userdanger'>[attack_message]</span>", null, COMBAT_MESSAGE_RANGE)
 	return 1
-

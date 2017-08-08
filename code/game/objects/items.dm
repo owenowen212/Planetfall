@@ -104,13 +104,18 @@ GLOBAL_VAR_INIT(rpg_loot_items, FALSE)
 
 	var/datum/rpg_loot/rpg_loot = null
 
+	var/attack_speed = CLICK_CD_MELEE
+
 
 	//Tooltip vars
 	var/in_inventory = FALSE//is this item equipped into an inventory slot or hand of a mob?
 	var/force_string //string form of an item's force. Edit this var only to set a custom force string
+	var/speed_string //same as 'force_string', don't edit if you want a default value
 	var/last_force_string_check = 0
+	var/last_speed_string_check = 0
 	var/tip_timer
 	var/force_string_override
+	var/speed_string_override
 
 /obj/item/Initialize()
 	if (!materials)
@@ -125,6 +130,9 @@ GLOBAL_VAR_INIT(rpg_loot_items, FALSE)
 
 	if(force_string)
 		force_string_override = TRUE
+
+	if(speed_string)
+		speed_string_override = TRUE
 
 /obj/item/Destroy()
 	flags &= ~DROPDEL	//prevent reqdels
@@ -657,29 +665,40 @@ GLOBAL_VAR_INIT(rpg_loot_items, FALSE)
 
 /obj/item/proc/set_force_string()
 	switch(force)
-		if(0 to 4)
+		if(0)
+			force_string = "harmless"
+		if(0 to 7)
 			force_string = "very low"
-		if(4 to 7)
+		if(7 to 15)
 			force_string = "low"
-		if(7 to 10)
-			force_string = "medium"
-		if(10 to 11)
+		if(15 to 30)
+			force_string = "average"
+		if(30 to 40) //12 is the force of a toolbox
 			force_string = "high"
-		if(11 to 20) //12 is the force of a toolbox
-			force_string = "robust"
-		if(20 to 25)
-			force_string = "very robust"
 		else
-			force_string = "exceptionally robust"
+			force_string = "lethal"
 	last_force_string_check = force
+
+/obj/item/proc/set_speed_string()
+	switch(attack_speed)
+		if(0 to 12)//1.2 seconds is /fast/
+			speed_string = "fast"
+		if(12 to 20)
+			speed_string = "medium"
+		if(20 to 35)
+			speed_string = "slow"
+		else
+			speed_string = "horrifically slow"
+
+	last_speed_string_check = attack_speed
 
 /obj/item/proc/openTip(location, control, params, user)
 	if(last_force_string_check != force && !force_string_override)
 		set_force_string()
+	if(last_speed_string_check != attack_speed && !speed_string_override)
+		set_speed_string()
 	if(!force_string_override)
-		openToolTip(user,src,params,title = name,content = "[desc]<br>[force ? "<b>Force:</b> [force_string]" : ""]",theme = "")
-	else
-		openToolTip(user,src,params,title = name,content = "[desc]<br><b>Force:</b> [force_string]",theme = "")
+		openToolTip(user,src,params,title = name,content = "[desc]<br><b>Force:</b> [force_string][force ? "<br><b>Attack Speed:</b> [speed_string]" : ""]",theme = "")
 
 /obj/item/MouseEntered(location, control, params)
 	if(in_inventory && usr.client.prefs.enable_tips)
@@ -690,4 +709,3 @@ GLOBAL_VAR_INIT(rpg_loot_items, FALSE)
 /obj/item/MouseExited()
 	deltimer(tip_timer)//delete any in-progress timer if the mouse is moved off the item before it finishes
 	closeToolTip(usr)
-
