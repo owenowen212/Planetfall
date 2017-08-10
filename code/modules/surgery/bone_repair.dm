@@ -1,5 +1,5 @@
 /datum/surgery/bone_repair
-	name = "Bone Repair"
+	name = "bone repair"
 	steps = list(/datum/surgery_step/incise, /datum/surgery_step/retract_skin, /datum/surgery_step/set_bone, /datum/surgery_step/close)
 	possible_locs = list("chest", "l_arm", "r_arm", "r_leg", "l_leg", "head")
 
@@ -26,7 +26,7 @@
 	else
 		user.visible_message("[user] begins to set the bones in [target]'s [target_zone] with [tool]...", "<span class='notice'>You begin setting the bones in [target]'s [target_zone] with [tool]...</span>")
 
-/datum/surgery_step/extract_implant/success(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, datum/surgery/surgery)
+/datum/surgery_step/set_bone/success(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, datum/surgery/surgery)
 	user.visible_message("[user] successfully sets the bones in [target]'s [target_zone]!", "<span class='notice'>You successfully set the bones in [target]'s [target_zone].</span>")
 	surgery.operated_bodypart.fix_bone()
 	surgery.operated_bodypart.splinted = FALSE
