@@ -22,7 +22,7 @@
 			var/obj/item/bodypart/affecting = X
 			if(affecting.body_part != LEG_RIGHT && affecting.body_part != LEG_LEFT)
 				continue
-			if(affecting.broken)
+			if(affecting.broken || affecting.splinted)
 				. += 2 //can't move fast with a broken leg
 
 /mob/living/carbon/slip(knockdown_amount, obj/O, lube)

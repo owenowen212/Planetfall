@@ -116,3 +116,4 @@
 /mob/living/carbon/mend_fractures()
 	for(var/obj/item/bodypart/B in bodyparts)
 		B.fix_bone()
+		B.splinted = FALSE

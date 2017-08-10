@@ -22,6 +22,7 @@
 	var/held_index = 0 //are we a hand? if so, which one!
 	var/is_pseudopart = FALSE //For limbs that don't really exist, eg chainsaws
 	var/broken = FALSE //For whether...it's broken
+	var/splinted = FALSE //Whether it's splinted. Movement doesn't deal damage, but you still move slowly.
 
 	//Coloring and proper item icon update
 	var/skin_tone = ""
@@ -113,7 +114,7 @@
 	broken = FALSE
 
 /obj/item/bodypart/on_mob_move()
-	if(!broken || status == BODYPART_ROBOTIC || !owner)
+	if(!broken || status == BODYPART_ROBOTIC || !owner || splinted)
 		return
 
 	if(prob(5))
