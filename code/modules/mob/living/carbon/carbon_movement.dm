@@ -18,6 +18,12 @@
 			. += 6 - 3*get_num_arms() //crawling is harder with fewer arms
 		if(legcuffed)
 			. += legcuffed.slowdown
+		for(var/X in bodyparts)
+			var/obj/item/bodypart/affecting = X
+			if(affecting.body_part != LEG_RIGHT && affecting.body_part != LEG_LEFT)
+				continue
+			if(affecting.broken)
+				. += 2 //can't move fast with a broken leg
 
 /mob/living/carbon/slip(knockdown_amount, obj/O, lube)
 	if(movement_type & FLYING)

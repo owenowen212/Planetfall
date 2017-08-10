@@ -253,6 +253,10 @@
 	return
 
 
+//////////////////////////////// BROKEN BONES...? ///////////////////////////:
+//I don't know why this is here. Better than anywhere else, I guess.
+/mob/proc/mend_fractures()
+	return
 
 
 

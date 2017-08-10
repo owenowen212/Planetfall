@@ -152,6 +152,13 @@
 					msg += " and [t_his] soul has departed"
 		msg += "...</span>\n"
 
+	var/list/broken_stuff = list()
+	for(var/obj/item/bodypart/B in bodyparts)
+		if(B.broken)
+			broken_stuff += B.name
+	if(broken_stuff.len)
+		msg += "<span class='warning'><B>[t_His] [english_list(broken_stuff)] [broken_stuff.len > 1 ? "are" : "is"] broken!</B></span>\n"
+
 	if(get_bodypart("head") && !getorgan(/obj/item/organ/brain))
 		msg += "<span class='deadsay'>It appears that [t_his] brain is missing...</span>\n"
 
