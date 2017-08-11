@@ -8,8 +8,8 @@
 		var/mob/living/carbon/human/H = target
 		var/obj/item/bodypart/affected = H.get_bodypart(user.zone_selected)
 		if(affected && affected.broken)
-			return 1
-		return 0
+			return TRUE
+		return FALSE
 
 /datum/surgery_step/set_bone
 	name = "set bone"
@@ -30,4 +30,5 @@
 	user.visible_message("[user] successfully sets the bones in [target]'s [target_zone]!", "<span class='notice'>You successfully set the bones in [target]'s [target_zone].</span>")
 	surgery.operated_bodypart.fix_bone()
 	surgery.operated_bodypart.splinted = FALSE
-	return 1
+	target.update_inv_splints()
+	return TRUE

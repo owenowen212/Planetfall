@@ -157,7 +157,7 @@
 		if(B.broken)
 			broken_stuff += B.name
 	if(broken_stuff.len)
-		msg += "<span class='warning'><B>[t_His] [english_list(broken_stuff)] [broken_stuff.len > 1 ? "are" : "is"] broken!</B></span>\n"
+		msg += "<span class='warning'><B>[t_His] [english_list(broken_stuff)] appear[broken_stuff.len > 1 ? "" : "s"] to be broken!</B></span>\n"
 
 	if(get_bodypart("head") && !getorgan(/obj/item/organ/brain))
 		msg += "<span class='deadsay'>It appears that [t_his] brain is missing...</span>\n"
