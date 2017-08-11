@@ -46,3 +46,4 @@
 	can_buckle = TRUE
 	buckle_lying = FALSE
 	can_ride_typecache = list(/mob/living/carbon/human, /mob/living/simple_animal/slime, /mob/living/simple_animal/parrot)
+	can_crawl = TRUE

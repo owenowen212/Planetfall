@@ -25,6 +25,9 @@
 			if(affecting.body_part == LEG_RIGHT || affecting.body_part == LEG_LEFT)
 				. += 2 //can't move fast with a broken leg
 
+	if(lying)
+		. += 8
+
 /mob/living/carbon/slip(knockdown_amount, obj/O, lube)
 	if(movement_type & FLYING)
 		return 0
