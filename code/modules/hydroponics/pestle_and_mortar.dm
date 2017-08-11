@@ -1,5 +1,5 @@
 /obj/item/weapon/reagent_containers/glass/beaker/mortar_and_pestle
-	name = "Mortar and pestle"
+	name = "mortar and pestle"
 	icon = 'icons/obj/hydroponics/equipment.dmi'
 	icon_state = "pestleandmortar"
 	item_state = null
@@ -14,7 +14,6 @@
 
 
 	var/static/list/blend_items = list(
-			//Sheets
 			/obj/item/stack/sheet/mineral/plasma = list("plasma" = 20),
 			/obj/item/stack/sheet/metal = list("iron" = 20),
 			/obj/item/stack/sheet/plasteel = list("iron" = 20, "plasma" = 20),
@@ -29,7 +28,6 @@
 			/obj/item/weapon/ore/bluespace_crystal = list("bluespace" = 20),
 			/obj/item/weapon/grown/nettle/basic = list("sacid" = 0),
 			/obj/item/weapon/grown/nettle/death = list("facid" = 0, "sacid" = 0),
-			//Blender Stuff
 			/obj/item/weapon/reagent_containers/food/snacks/grown/soybeans = list("soymilk" = 0),
 			/obj/item/weapon/reagent_containers/food/snacks/grown/tomato = list("ketchup" = 0),
 			/obj/item/weapon/reagent_containers/food/snacks/grown/wheat = list("flour" = -5),
@@ -39,12 +37,10 @@
 			/obj/item/weapon/reagent_containers/food/snacks/grown/cherries = list("cherryjelly" = 0),
 			/obj/item/weapon/reagent_containers/food/snacks/grown/bluecherries = list("bluecherryjelly" = 0),
 			/obj/item/weapon/reagent_containers/food/snacks/egg = list("eggyolk" = -5),
-			//Grinder stuff, but only if dry
 			/obj/item/weapon/reagent_containers/food/snacks/grown/coffee/robusta = list("coffeepowder" = 0, "morphine" = 0),
 			/obj/item/weapon/reagent_containers/food/snacks/grown/coffee = list("coffeepowder" = 0),
 			/obj/item/weapon/reagent_containers/food/snacks/grown/tea/astra = list("teapowder" = 0, "salglu_solution" = 0),
 			/obj/item/weapon/reagent_containers/food/snacks/grown/tea = list("teapowder" = 0),
-			//All types that you can put into the grinder to transfer the reagents to the beaker. !Put all recipes above this.!
 			/obj/item/slime_extract = list(),
 			/obj/item/weapon/reagent_containers/pill = list(),
 			/obj/item/weapon/reagent_containers/food = list(),
@@ -71,7 +67,7 @@
 								return 1
 
 		if(holdingitems && holdingitems.len >= limit)
-				to_chat(usr, "The mortar and pestle cannot hold anymore items.")
+				to_chat(usr, "The mortar and pestle cannot hold any more items.")
 				return 1
 
 		//Fill machine with a bag!
@@ -81,11 +77,11 @@
 						B.remove_from_storage(G, src)
 						holdingitems += G
 						if(holdingitems && holdingitems.len >= limit) //Sanity checking so the blender doesn't overfill
-								to_chat(user, "<span class='notice'>You fill the pestle and mortar to the brim.</span>")
+								to_chat(user, "<span class='notice'>You fill the mortar and pestle to the brim.</span>")
 								break
 
 				if(!I.contents.len)
-						to_chat(user, "<span class='notice'>You empty the plant bag into the pestle and mortar.</span>")
+						to_chat(user, "<span class='notice'>You empty the plant bag into the mortar and pestle.</span>")
 
 				src.updateUsrDialog()
 				return 1
@@ -107,7 +103,7 @@
 	if(!src.holdingitems.len)
 		to_chat(user, "<span class='warning'>There is nothing in the mortar and pestle to grind!</span>")
 	else
-		playsound(src.loc,'sound/effects/clownstep1.ogg', 75, 1)
+		playsound(src.loc,'sound/effects/mortar_and_pestle.ogg', 75, 1)
 		to_chat(user, "<span class='notice'>You start to grind up the contents of the mortar and pestle.</span>")
 		if(do_after(user, 50, target = user.loc))
 			grind()
