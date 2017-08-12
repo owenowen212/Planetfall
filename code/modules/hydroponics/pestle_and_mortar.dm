@@ -138,6 +138,20 @@
 	holdingitems -= O
 	QDEL_NULL(O)
 
+/obj/item/weapon/reagent_containers/glass/beaker/mortar_and_pestle/attack_hand(mob/user)
+	if(loc == user)
+		if(!user.is_holding(src))
+			..()
+			return
+		var/L = holdingitems.len
+		var/obj/item/O = holdingitems[L]
+		O.loc = get_turf(user.loc)
+		holdingitems -= O
+		updateUsrDialog()
+		to_chat(user, "<span class='notice'>You remove an item from the mortar.</span>")
+		return
+	..()
+
 /obj/item/weapon/reagent_containers/glass/beaker/mortar_and_pestle/verb/ejectcontents(mob/user)
 	var/response = alert(user, "Are you sure you wish to tip the contents out?", "Eject ingredients?", "Yes", "No")
 	set name = "Eject ingredients"
