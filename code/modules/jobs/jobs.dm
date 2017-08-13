@@ -5,7 +5,8 @@ GLOBAL_LIST_INIT(command_positions, list(
 	"Chief Engineer",
 	"Research Director",
 	"Chief Medical Officer",
-	"Colony Director"))
+	"Colony Director",
+	"Assistant Director"))
 
 
 GLOBAL_LIST_INIT(engineering_positions, list(
@@ -85,6 +86,7 @@ GLOBAL_LIST_INIT(nonhuman_positions, list(
 	var/static/regex/rd_expand = new("rd")
 	var/static/regex/ce_expand = new("ce")
 	var/static/regex/cd_expand = new("cd")
+	var/static/regex/ad_expand = new("ad")
 	var/static/regex/qm_expand = new("qm")
 	var/static/regex/sec_expand = new("(?<!security )officer")
 	var/static/regex/engi_expand = new("(?<!station )engineer")
@@ -102,6 +104,7 @@ GLOBAL_LIST_INIT(nonhuman_positions, list(
 	job = rd_expand.Replace(job, "research director")
 	job = ce_expand.Replace(job, "chief engineer")
 	job = cd_expand.Replace(job, "colony director")
+	job = ad_expand.Replace(job, "assistant director")
 	job = qm_expand.Replace(job, "quartermaster")
 	job = sec_expand.Replace(job, "security officer")
 	job = engi_expand.Replace(job, "station engineer")

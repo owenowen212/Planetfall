@@ -70,7 +70,7 @@
 /obj/item/weapon/paper/fluff/stations/cere/journal/journal
 	name = "Journal Log"
 	info = "<b><center>2XXX - 2nd Trimester</center></b><br><br><center>I hide in here, away from the masses, not like it matters much considering how fucking huge this place is. "
-	
+
 /obj/item/weapon/paper/fluff/stations/cere/journal/journal_2
 	name = "Journal Log 2"
 	info = "<b><center>2XXX - 3rd Trimester</center></b><br><br><center>I hear strange whispers from the halls, longing for blood. Something isn't right here. Why did they transfer us here to work in the first place? "
@@ -111,3 +111,12 @@
 	name = "URGENT!"
 	info = "A hastily written note has been scribbled here... <br><br> Please use the ore redemption machine in the cargo office for smelting. PLEASE! <br><br>--The Research Staff"
 
+
+// Planetfall Colony documents
+
+/obj/item/weapon/paper/colonyobjectives
+	info = "<center><B>Colony Objectives</B></center><BR><BR><ul><BR><li> Establish a safe working environment.</li><BR><li> Establish a sustainable food source.</li><BR><li> Acquire some materials.</li><li> Improve the existing colony facilities.</li></ul>"
+	name = "Colony Objectives"
+
+/obj/item/weapon/paper/guides/for_colonists
+	info = "<center><B>Guide for Colonists</B><br><br>Welcome to your new life on the colony<br><br>This guide hopes to prepare you for the challenges you will face during your time on your new colony and how to ensure that the you function as optimally as possible."

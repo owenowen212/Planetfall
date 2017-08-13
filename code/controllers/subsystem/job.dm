@@ -235,13 +235,6 @@ SUBSYSTEM_DEF(job)
 	//Scale number of open security officer slots to population
 	setup_officer_positions()
 
-	//Jobs will have fewer access permissions if the number of players exceeds the threshold defined in game_options.txt
-	if(config.minimal_access_threshold)
-		if(config.minimal_access_threshold > unassigned.len)
-			config.jobs_have_minimal_access = 0
-		else
-			config.jobs_have_minimal_access = 1
-
 	//Shuffle players and jobs
 	unassigned = shuffle(unassigned)
 
@@ -398,12 +391,14 @@ SUBSYSTEM_DEF(job)
 				M = H
 
 	to_chat(M, "<b>You are the [rank].</b>")
-	to_chat(M, "<b>As the [rank] you answer directly to [job.supervisors]. Special circumstances may change this.</b>")
-	to_chat(M, "<b>To speak on your departments radio, use the :h button. To see others, look closely at your headset.</b>")
+	if(job.title == "Colony Director")
+		to_chat(M, "<b>As the [rank] you are ultimately responsible for the Colony. Your role is to co-ordinate the construction, maintenance and development of the Colony. You may wish to appoint some subordinates to assist you.</b>")
+	else
+		to_chat(M, "<b>As the [rank] you answer directly to [job.supervisors]. This may change as time progresses.</b>")
+	// Commented out for now until we decide what we're doing with Radios
+	// to_chat(M, "<b>To speak on your departments radio, use the :h button. To see others, look closely at your headset.</b>")
 	if(job.req_admin_notify)
 		to_chat(M, "<b>You are playing a job that is important for Game Progression. If you have to disconnect, please notify the admins via adminhelp.</b>")
-	if(config.minimal_access_threshold)
-		to_chat(M, "<FONT color='blue'><B>As this station was initially staffed with a [config.jobs_have_minimal_access ? "full crew, only your job's necessities" : "skeleton crew, additional access may"] have been added to your ID card.</B></font>")
 
 	if(job && H)
 		job.after_spawn(H, M)

@@ -29,7 +29,6 @@ Assistant
 		return 1
 	return 0
 
-
 /datum/outfit/job/assistant
 	name = "Assistant"
 	jobtype = /datum/job/assistant

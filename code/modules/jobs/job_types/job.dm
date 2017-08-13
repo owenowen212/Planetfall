@@ -135,7 +135,7 @@
 	var/backpack = /obj/item/weapon/storage/backpack
 	var/satchel  = /obj/item/weapon/storage/backpack/satchel
 	var/duffelbag = /obj/item/weapon/storage/backpack/duffelbag
-	var/box = /obj/item/weapon/storage/box/survival
+	var/box = FALSE
 
 	var/pda_slot = slot_belt
 
