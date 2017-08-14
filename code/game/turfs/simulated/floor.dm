@@ -147,7 +147,7 @@
 	var/obj/item/weapon/crowbar/CB = user.is_holding_item_of_type(/obj/item/weapon/crowbar)
 	if(!CB)
 		return
-	var/turf/open/floor/plating/P = pry_tile(CB, user, TRUE)
+	var/turf/open/floor/planet/dirt/P = pry_tile(CB, user, TRUE)
 	if(!istype(P))
 		return
 	P.attackby(T, user, params)
