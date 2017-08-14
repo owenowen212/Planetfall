@@ -1,4 +1,6 @@
 /turf/open/floor/planet
+	name = "bare earth"
+	gender = PLURAL
 	icon_state = "dirt"
 	initial_gas_mix = PLANET_DEFAULT_ATMOS
 	planetary_atmos = TRUE
@@ -27,6 +29,7 @@
 ////////////GRASS///////////////
 
 /turf/open/floor/planet/grass
+	name = "grass"
 	icon = 'icons/turf/floors/planet.dmi'
 	icon_state = "grass-1"
 	var/ore_type = /obj/item/weapon/ore/glass
@@ -50,6 +53,7 @@
 /////////////DIRT///////////
 
 /turf/open/floor/planet/dirt
+	name = "dirt"
 
 /turf/open/floor/planet/greenerdirt
 	icon_state = "greenerdirt"
@@ -70,6 +74,7 @@
 ///////////WOOD////////////
 
 /turf/open/floor/planet/wood
+	name = "wooden floor"
 	icon_state = "wood"
 	floor_tile = /obj/item/stack/tile/wood
 	broken_states = list("wood-broken", "wood-broken2", "wood-broken3", "wood-broken4", "wood-broken5", "wood-broken6", "wood-broken7")
@@ -90,6 +95,7 @@
 ///////////SAND///////////
 
 /turf/open/floor/planet/sand
+	name = "sand"
 	icon_state = "sand"
 	var/ore_type = /obj/item/weapon/ore/glass
 	var/turfverb = "dig up"
@@ -106,6 +112,7 @@
 		..()
 
 /turf/open/floor/planet/fine_sand
+	name = "sand"
 	icon_state = "asteroid"
 	var/ore_type = /obj/item/weapon/ore/glass
 	var/turfverb = "dig up"
