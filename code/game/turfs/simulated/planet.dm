@@ -74,6 +74,7 @@
 ///////////WOOD////////////
 
 /turf/open/floor/planet/wood
+	gender = NEUTER
 	name = "wooden floor"
 	icon_state = "wood"
 	floor_tile = /obj/item/stack/tile/wood
