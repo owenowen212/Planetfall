@@ -2,6 +2,8 @@
 	icon_state = "dirt"
 	initial_gas_mix = PLANET_DEFAULT_ATMOS
 	planetary_atmos = TRUE
+	light_power = 3
+	light_range = 3
 
 /turf/open/floor/planet/grass
 	icon = 'icons/turf/floors/planet.dmi'
@@ -33,6 +35,8 @@
 	icon_state = "wood"
 	floor_tile = /obj/item/stack/tile/wood
 	broken_states = list("wood-broken", "wood-broken2", "wood-broken3", "wood-broken4", "wood-broken5", "wood-broken6", "wood-broken7")
+	light_power = 0
+	light_range = 0
 
 /turf/open/floor/planet/sand
 	icon_state = "sand"
