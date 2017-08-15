@@ -6,6 +6,7 @@
 	planetary_atmos = TRUE
 	light_power = 3
 	light_range = 3
+	var/ore_type = /obj/item/weapon/ore/glass
 
 /turf/open/floor/planet/attackby(obj/item/C, mob/user, params)
 	if(istype(C, /obj/item/stack/tile))
@@ -26,13 +27,29 @@
 	else
 		..()
 
+/turf/open/floor/planet/ex_act(severity, target, destructionoverride = TRUE)
+	..()
+	if(severity == 1)
+		breakPlanet()
+	else if(severity == 2 && prob(75))
+		breakPlanet(dropsloot = TRUE, fire = TRUE)
+	else if(severity == 3 && prob(50))
+		breakPlanet(dropsloot = TRUE, fire = TRUE)
+
+/turf/open/floor/planet/proc/breakPlanet(dropsloot = FALSE, fire = FALSE)
+	if(dropsloot)
+		new ore_type(src)
+		new ore_type(src)
+	make_plating()
+	if(fire)
+		hotspot_expose(1000,CELL_VOLUME)
+
 ////////////GRASS///////////////
 
 /turf/open/floor/planet/grass
 	name = "grass"
 	icon = 'icons/turf/floors/planet.dmi'
 	icon_state = "grass-1"
-	var/ore_type = /obj/item/weapon/ore/glass
 	var/turfverb = "uproot"
 
 /turf/open/floor/planet/grass/Initialize()
@@ -57,7 +74,6 @@
 
 /turf/open/floor/planet/greenerdirt
 	icon_state = "greenerdirt"
-	var/ore_type = /obj/item/weapon/ore/glass
 	var/turfverb = "uproot"
 
 /turf/open/floor/planet/greenerdirt/attackby(obj/item/C, mob/user, params)
@@ -98,7 +114,6 @@
 /turf/open/floor/planet/sand
 	name = "sand"
 	icon_state = "sand"
-	var/ore_type = /obj/item/weapon/ore/glass
 	var/turfverb = "dig up"
 
 /turf/open/floor/planet/sand/attackby(obj/item/C, mob/user, params)
@@ -115,7 +130,6 @@
 /turf/open/floor/planet/fine_sand
 	name = "sand"
 	icon_state = "asteroid"
-	var/ore_type = /obj/item/weapon/ore/glass
 	var/turfverb = "dig up"
 
 /turf/open/floor/planet/fine_sand/attackby(obj/item/C, mob/user, params)

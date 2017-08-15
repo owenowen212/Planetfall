@@ -45,7 +45,7 @@
 	if(mapload)
 		MakeDirty()
 
-/turf/open/floor/ex_act(severity, target)
+/turf/open/floor/ex_act(severity, target, destructionoverride = FALSE)
 	var/shielded = is_shielded()
 	..()
 	if(severity != 1 && shielded && target != src)
@@ -54,7 +54,8 @@
 		src.ChangeTurf(src.baseturf)
 	if(target != null)
 		severity = 3
-
+	if(destructionoverride)
+		return
 	switch(severity)
 		if(1)
 			src.ChangeTurf(src.baseturf)
